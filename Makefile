@@ -1,5 +1,5 @@
-NAME = ft_retro
-SRC = main.cpp CPU.cpp
+NAME = ft_gkrellm
+SRC = main.cpp Module.cpp CPU.cpp
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = objects
 CC = clang++

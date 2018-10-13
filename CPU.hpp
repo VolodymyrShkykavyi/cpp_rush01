@@ -3,21 +3,14 @@
 
 #define CPU_NAME_LEN 1024
 
-#include <stdio.h>
-#include <stdint.h>
-#include <sys/types.h>
-#include <sys/sysctl.h>
-#include <string>
-#include <iostream>
+#include "Module.hpp"
 
-
-class CPU
+class CPU: public Module
 {
 private:
     char    _name[CPU_NAME_LEN];
     size_t  _nameLen;
     int         _count;
-
 
 public:
     CPU();
@@ -25,6 +18,10 @@ public:
     CPU(CPU const &src);
     CPU &operator=(CPU const &src);
 
+    //override
+    virtual void draw();
+
+    //getters
     std::string getName();
     int         getCount();
 

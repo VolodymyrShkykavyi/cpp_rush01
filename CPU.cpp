@@ -28,3 +28,7 @@ std::string CPU::getName() {
 int CPU::getCount() {
     return _count;
 }
+
+void CPU::draw() {
+
+}
