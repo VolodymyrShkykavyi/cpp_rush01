@@ -11,24 +11,30 @@
 // ************************************************************************** //
 
 #include <unistd.h>
+#include <string.h>
 #include <iostream>
 
 #include "graphic.hpp"
 #include "DateTime.hpp"
 
 
-int main () {
+int main (int ac, char *av[]) {
 
-	std::cout << "Select display" << std::endl << "1: Graphic" << std::endl << "2: Terminal" << std::endl;
-	std::string input;
-	std::cin >> input;
-	if (input == "1")
+    std::string input;
+
+    if (ac == 2 && strcmp(av[1], "1") && strcmp(av[1], "2")){
+
+        std::cout << "Select display" << std::endl << "1: Graphic" << std::endl << "2: Terminal" << std::endl;
+        std::cin >> input;
+    }
+
+	if (!strcmp(av[1], "1") || input == "1")
     {
     	std::cout << "Grafic" << std::endl;
     	Graphic	graph;
     	graph.start();
     }
-    else if (input == "2")
+    else if (!strcmp(av[1], "2") || input == "2")
     {
     	 std::cout << "Ncerces" << std::endl;
     }

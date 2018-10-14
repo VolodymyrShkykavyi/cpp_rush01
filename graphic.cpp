@@ -31,6 +31,8 @@ Graphic::Graphic() {
     image2 = SDL_LoadBMP("image/body1.bmp");
 
 
+    _data = new DateTime();
+
 }
 
 void 	Graphic::set_pixel(int x, int y, Uint32 pixel)
@@ -52,6 +54,7 @@ void	Graphic::printmodule() {
 
     SDL_Surface *TTF_TextSolid = TTF_RenderText_Solid(font, "Nick", color);
     SDL_Rect rect = {130, 5, 50, 30};
+
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &rect);
     SDL_FreeSurface(TTF_TextSolid);
 
@@ -99,6 +102,12 @@ void Graphic::GetSurface (){   // от времени я получаю серф
 
     SDL_Rect rstrect = {0, 40, 0, 0};
     SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
+
+
+    SDL_Rect lstrect = {15, 48, 0, 0};
+    SDL_BlitSurface(_data->getSurfaceData(), NULL, _bmp, &lstrect);
+
+
 
     SDL_Rect cstrect = {0, 175, 10, 10};
     SDL_BlitSurface(image, NULL ,_bmp, &cstrect);

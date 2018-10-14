@@ -15,47 +15,38 @@
 #include <iostream>
 
 
-DateTime::DateTime() : _bmp(NULL) {
-
-};
-
-DateTime::DateTime(SDL_Surface *bmp) {
-
-	_bmp = bmp;
-	setHour();
+DateTime::DateTime(){
+    _title = "Date";
 };
 
 DateTime::~DateTime() {
 
-
 };
 
-void         DateTime::setHour( void ) {
+void DateTime::setHour(void) {
 
     time_t rawtime;
-    struct tm * timeinfo;
+    struct tm *timeinfo;
 
-    time (&rawtime);
+    time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(_buffer,80,"%d-%m-%Y %I:%M:%S",timeinfo);
+    strftime(_buffer, 80, "%d-%m-%Y %I:%M:%S", timeinfo);
 }
 
-const char *      DateTime::getHour(void)
-{
+const char *DateTime::getHour(void) {
     setHour();
     return _buffer;
 }
 
-SDL_Surface *		DateTime::drow() {
 
-	setHour();
-	TTF_Font* font = TTF_OpenFont("SDL/OpenSans-Regular.ttf", 30);
-	SDL_Color color;
-	color.r = 255;
-	color.g = 255;
-	color.b = 0;
-	SDL_Surface *TTF_TextSolid = TTF_RenderText_Solid(font, "AS313311321S", color);
-	TTF_CloseFont(font);
-	return (TTF_TextSolid);
-};
+
+SDL_Surface * DateTime::getSurfaceData() {
+    setHour();
+
+    return getSurface(_buffer);
+}
+
+void DateTime::draw() {
+
+}

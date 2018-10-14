@@ -56,7 +56,7 @@ public:
 
     //SDL_Surface		*_time; // Серфейс который будет получать время
 
-    //void	GetSurface(DateTime *data);
+    void	GetSurface();
     void set_pixel(int x, int y, Uint32 pixel);
 
     void printmodule();

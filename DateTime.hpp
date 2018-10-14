@@ -21,25 +21,24 @@
 
 class DateTime : Module {
 
+private:
+    char _buffer[80];
 
-	public:
 
-		SDL_Surface		*_bmp;
+public:
 
-		DateTime();
-		DateTime(SDL_Surface *bmp);
-		DateTime(DateTime const & src);
-		~DateTime();
+    DateTime();
+    ~DateTime();
 
-		DateTime    	&operator= (const DateTime &rhs);
-		const char*		getHour( void );
-		void			setHour( void );
-		//void 			drow(); //  для н керсес
-		SDL_Surface * 	drow();
+    DateTime(DateTime const &src);
+    DateTime &operator=(const DateTime &rhs);
 
-		char			_buffer[80];
+    const char *getHour(void);
+    virtual void draw();
+    void setHour(void);
 
-		
+    SDL_Surface *getSurfaceData();
+
 };
 
 #endif

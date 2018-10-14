@@ -16,8 +16,11 @@
 class Module: public IMonitorModule
 {
 protected:
+    std::string _title;
     int _startY;
     Module();
+    TTF_Font* _font;
+    SDL_Color _color;
 
 public:
     ~Module();
@@ -26,6 +29,9 @@ public:
 
     virtual void draw() = 0;
     int getStartY();
+    std::string getTitle();
+    SDL_Surface *getSurface(std::string);
+    SDL_Surface *getSurfaceTitle();
 };
 
 #endif

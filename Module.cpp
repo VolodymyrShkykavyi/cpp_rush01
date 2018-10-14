@@ -1,7 +1,16 @@
 #include "Module.hpp"
 
-Module::Module() {}
-Module::~Module() {}
+Module::Module() {
+    _color.r = 0;
+    _color.g = 70;
+    _color.b = 0;
+
+    _font =  TTF_OpenFont("frameworks/ARIAL.TTF", 20);
+}
+
+Module::~Module() {
+    TTF_CloseFont(_font);
+}
 
 Module::Module(Module const &src) {
     *this = src;
@@ -15,4 +24,19 @@ Module& Module::operator=(Module const &src) {
 
 int Module::getStartY() {
     return _startY;
+}
+
+std::string Module::getTitle() {
+    return _title;
+}
+
+SDL_Surface * Module::getSurface(std::string msg = "") {
+    SDL_Surface *TTF_TextSolid = TTF_RenderText_Solid(_font, msg.c_str(), _color);
+
+    return (TTF_TextSolid);
+}
+
+
+SDL_Surface * Module::getSurfaceTitle() {
+    return getSurface(_title);
 }
