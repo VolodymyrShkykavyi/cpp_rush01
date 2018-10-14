@@ -24,6 +24,7 @@
 #include "System.hpp"
 #include "RAM.hpp"
 #include "Network.hpp"
+#include "Disk.hpp"
 
 #include "IMonitorDisplay.hpp"
 
@@ -35,6 +36,7 @@ private:
     System *_system;
     RAM *_ram;
     Network *_network;
+    Disk *_disk;
 
 
 

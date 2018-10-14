@@ -29,6 +29,16 @@ std::string System::getUserName() {
     return _username;
 }
 
+std::string System::getOSName() {
+
+    return ("Version: " + _osversion);
+}
+
+std::string System::getOSVersion() {
+
+    return ("OS: " + _osname);
+}
+
 SDL_Surface * System::getSurfaceUserName() {
     return getSurface("Username: " + _username);
 }

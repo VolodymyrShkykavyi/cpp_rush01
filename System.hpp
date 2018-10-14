@@ -22,6 +22,8 @@ public:
 
     std::string getUserName();
     std::string getHostName();
+    std::string getOSName();
+    std::string getOSVersion();
 
     SDL_Surface *getSurfaceUserName();
     SDL_Surface *getSurfaceHostName();

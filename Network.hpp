@@ -13,6 +13,9 @@ public:
 
     virtual void draw();
 
+    std::string getIn();
+    std::string getOut();
+
     SDL_Surface *getSurfaceIn();
     SDL_Surface *getSurfaceOut();
 
