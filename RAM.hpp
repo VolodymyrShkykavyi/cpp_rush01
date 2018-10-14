@@ -16,6 +16,10 @@ public:
 
     virtual void draw();
 
+    std::string getUsed();
+    std::string getUnused();
+    std::string getMemory();
+
     SDL_Surface *getSurfaceUsed();
     SDL_Surface *getSurfaceUnused();
     SDL_Surface *getSurfaceMemory();

@@ -25,7 +25,7 @@ int main (int ac, char *av[]) {
 
     if (ac != 2){
 
-        system("printf '\e[8;50;70t'");
+        system("printf '\e[8;50;50t'");
         std::cout << "Select display" << std::endl << "1: Graphic" << std::endl << "2: Terminal" << std::endl;
         std::cin >> input;
     }
