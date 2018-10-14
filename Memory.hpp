@@ -13,6 +13,11 @@ public:
 
     virtual void draw();
 
+    std::string getTotal();
+    std::string getResident();
+    std::string getPrivate();
+    std::string getShared();
+
     SDL_Surface *getSurfaceTotal();
     SDL_Surface *getSurfaceResident();
     SDL_Surface *getSurfacePrivate();

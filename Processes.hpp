@@ -14,6 +14,7 @@ public:
     virtual void draw();
 
     SDL_Surface *getSurfaceInfo();
+    std::string getInfo();
 };
 
 #endif

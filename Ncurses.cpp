@@ -36,6 +36,8 @@ Ncurses::Ncurses() {
     _ram = new RAM();
     _network = new Network();
     _disk = new Disk();
+    _memory = new Memory();
+    _proc = new Processes();
 
 	refresh();
 }
@@ -83,7 +85,11 @@ void	Ncurses::box() {
 		move(35, i);
 		addch(oldalchar);
 	}
+	for (int i = 0; i < _maxwidth - 1; i++) {
 
+		move(42, i);
+		addch(oldalchar);
+	}
 
 
 	for (int i = 0; i < _maxheight - 2; i++) {
@@ -94,7 +100,7 @@ void	Ncurses::box() {
 
 	for (int i = 0; i < _maxheight - 2; i++) {
 
-		move(i, _maxwidth - 2);
+		move(i, _maxwidth - 1);
 		addch(oldalchar);
 	}
 	attroff(COLOR_PAIR(3));
@@ -139,16 +145,34 @@ void	Ncurses::printmodule() {
 	mvprintw(33, 6, "%-50s", _network->getOut().c_str());
 	attroff(COLOR_PAIR(1));
 
+	attron(COLOR_PAIR(3));
+	mvprintw(36, 6, "MEMORY REGIONS");
+	mvprintw(37, 6, "%-50s", _memory->getTotal().c_str());
+	mvprintw(38, 6, "%-50s", _memory->getResident().c_str());
+	mvprintw(39, 6, "%-50s", _memory->getPrivate().c_str());
+	mvprintw(40, 6, "%-50s", _memory->getShared().c_str());
+	attroff(COLOR_PAIR(3));
 
+	attron(COLOR_PAIR(4));
+	mvprintw(43, 6, "PROCESSES");
+	mvprintw(45, 6, "%-50s", _proc->getInfo().c_str());
+	attroff(COLOR_PAIR(4));
 
+	std::string cat;
+
+	cat = "\n"
+"       /\\___/\\  \n"
+"      ( o   o ) \n"
+"      (  =^=  ) \n"
+"      (        ) \n"
+"      (         ) \n"
+"      (          ))))))))))) \n";
+
+	mvprintw(46, 6, "%s", cat.c_str());
 	box();
-
 	refresh();
 
 }
-
-
-
 
 
 Ncurses::Ncurses(Ncurses const & src) {

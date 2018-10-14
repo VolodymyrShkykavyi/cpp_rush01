@@ -25,6 +25,8 @@
 #include "RAM.hpp"
 #include "Network.hpp"
 #include "Disk.hpp"
+#include "Memory.hpp"
+#include "Processes.hpp"
 
 #include "IMonitorDisplay.hpp"
 
@@ -37,6 +39,8 @@ private:
     RAM *_ram;
     Network *_network;
     Disk *_disk;
+    Memory *_memory;
+    Processes *_proc;
 
 
 
