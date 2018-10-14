@@ -7,6 +7,9 @@
 #include <sys/sysctl.h>
 #include <string>
 #include <iostream>
+# include <SDL.h>
+# include <SDL_ttf.h>
+
 
 #include "IMonitorModule.hpp"
 

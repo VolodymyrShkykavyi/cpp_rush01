@@ -1,22 +1,41 @@
-NAME = ft_gkrellm
-SRC = main.cpp Module.cpp CPU.cpp
+
+
+NAME =	ft_gkrellm
+
+CC = clang++
+
+FLAGS = -Wall -Werror -Wextra
+
+FRAMEWORKS = -F./frameworks \
+               -rpath ./frameworks \
+               -framework SDL2 -framework SDL2_ttf -framework SDL2_image \
+
+INCLUDES =  -I./frameworks/SDL2.framework/Versions/A/Headers \
+               -I./frameworks/SDL2_ttf.framework/Versions/A/Headers \
+               -I./frameworks/SDL2_image.framework/Versions/A/Headers \
+             
+
+SRC = main.cpp graphic.cpp DateTime.cpp Module.cpp CPU.cpp
+
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = objects
-CC = clang++
-FLAGS = -Wall -Werror -Wextra
-INCLUDES = -lncurses
 
-all: $(NAME)
-$(NAME): $(OBJ_DIR) $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(INCLUDES)
+all:	 $(NAME)
+
+$(NAME): $(OBJ) $(OBJ_DIR)
+		 $(CC) $(FLAGS) $(OBJ) -o $(NAME) $(FRAMEWORKS) $(INCLUDES)
+
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 $(OBJ_DIR)/%.o: %.cpp
-	$(CC) $(FLAGS) -o $@ -c $<
+		$(CC) $(FLAGS) $(INCLUDES)-c $< -o $@  
+
 clean:
-	rm -f $(OBJ)
+		/bin/rm -f $(OBJ)
+
 fclean: clean
-	rm -f $(NAME)
-re: fclean all
-run: re
-	./$(NAME)
+		/bin/rm -f $(NAME)
+
+re:		fclean all
+
+.PHONY: all clean fclean re

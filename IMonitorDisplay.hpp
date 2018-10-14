@@ -3,7 +3,7 @@
 
 class IMonitorDisplay {
 public:
-    virtual void run() = 0; //TODO: може щось інше, для класу що запускає візуалізацію
+    virtual void start() = 0;
 };
 
 #endif
