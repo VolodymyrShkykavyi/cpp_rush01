@@ -35,6 +35,7 @@ Ncurses::Ncurses() {
     _system = new System();
     _ram = new RAM();
     _network = new Network();
+    _disk = new Disk();
 
 	refresh();
 }
@@ -56,13 +57,30 @@ void	Ncurses::box() {
 
 	for (int i = 0; i < _maxwidth - 1; i++) {
 
-		move(7, i);
+		move(9, i);
 		addch(oldalchar);
 	}
 
 	for (int i = 0; i < _maxwidth - 1; i++) {
 
-		move(14, i);
+		move(16, i);
+		addch(oldalchar);
+	}
+
+	for (int i = 0; i < _maxwidth - 1; i++) {
+
+		move(23, i);
+		addch(oldalchar);
+	}
+
+	for (int i = 0; i < _maxwidth - 1; i++) {
+
+		move(29, i);
+		addch(oldalchar);
+	}
+	for (int i = 0; i < _maxwidth - 1; i++) {
+
+		move(35, i);
 		addch(oldalchar);
 	}
 
@@ -90,25 +108,36 @@ void	Ncurses::printmodule() {
 	mvprintw(3, 6, _data->getHour());
 	mvprintw(4, 6, "Username:%s", _system->getUserName().c_str());
 	mvprintw(5, 6, "Hostname:%s",_system->getHostName().c_str());
+	mvprintw(6, 6, "%s", _system->getOSName().c_str());
+	mvprintw(7, 6, "%s",_system->getOSVersion().c_str());
 	attroff(COLOR_PAIR(4));
 
 	attron(COLOR_PAIR(5));
-	mvprintw(8, 6, "CPU INFO");
-	mvprintw(10, 6, _cpu->getName().c_str());
-	mvprintw(11, 6, "%-50s", _cpu->getUsage().c_str());
-	mvprintw(12, 6, "Number of cores: %d", _cpu->getCount());
+	mvprintw(10, 6, "CPU INFO");
+	mvprintw(12, 6, _cpu->getName().c_str());
+	mvprintw(13, 6, "%-50s", _cpu->getUsage().c_str());
+	mvprintw(14, 6, "Number of cores: %d", _cpu->getCount());
 	attroff(COLOR_PAIR(5));
 
 
 	attron(COLOR_PAIR(6));
-	mvprintw(15, 6, "RUM INFO");
-
-
-	mvprintw(17, 6, "%-50s", _ram->getUsed().c_str());
-	mvprintw(18, 6, "%-50s", _ram->getUnused().c_str());
-	mvprintw(19, 6, "%s", _ram->getMemory().c_str());
-
+	mvprintw(17, 6, "RAM INFO");
+	mvprintw(19, 6, "%-50s", _ram->getUsed().c_str());
+	mvprintw(20, 6, "%-50s", _ram->getUnused().c_str());
+	mvprintw(21, 6, "%s", _ram->getMemory().c_str());
 	attroff(COLOR_PAIR(6));
+
+	attron(COLOR_PAIR(2));
+	mvprintw(24, 6, "STORAGE INFO");
+	mvprintw(26, 6, "%-50s", _disk->getUserCapacity().c_str());
+	mvprintw(27, 6, "%-50s", _disk->geUserAvailable().c_str());
+	attroff(COLOR_PAIR(2));
+
+	attron(COLOR_PAIR(1));
+	mvprintw(30, 6, "NETWORK INFO");
+	mvprintw(32, 6, "%-50s", _network->getIn().c_str());
+	mvprintw(33, 6, "%-50s", _network->getOut().c_str());
+	attroff(COLOR_PAIR(1));
 
 
 

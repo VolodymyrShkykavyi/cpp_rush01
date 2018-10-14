@@ -13,6 +13,9 @@ public:
 
     virtual void draw();
 
+    std::string getUserCapacity();
+    std::string geUserAvailable();
+
     SDL_Surface *getSurfaceUserCapacity();
     SDL_Surface *getSurfaceUserAvailable();
 
