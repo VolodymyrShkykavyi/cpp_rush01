@@ -31,6 +31,10 @@ Ncurses::Ncurses() {
   	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
 
   	_data = new DateTime();
+    _cpu = new CPU();
+    _system = new System();
+    _ram = new RAM();
+    _network = new Network();
 
 	refresh();
 }
@@ -49,11 +53,27 @@ void	Ncurses::box() {
 		move(_maxheight - 2, i);
 		addch(oldalchar);
 	}
+
+	for (int i = 0; i < _maxwidth - 1; i++) {
+
+		move(7, i);
+		addch(oldalchar);
+	}
+
+	for (int i = 0; i < _maxwidth - 1; i++) {
+
+		move(14, i);
+		addch(oldalchar);
+	}
+
+
+
 	for (int i = 0; i < _maxheight - 2; i++) {
 
 		move(i, 0);
 		addch(oldalchar);
 	}
+
 	for (int i = 0; i < _maxheight - 2; i++) {
 
 		move(i, _maxwidth - 2);
@@ -66,28 +86,32 @@ void	Ncurses::printmodule() {
 
 
 	attron(COLOR_PAIR(4));
-
-
-	const char *sys = "             \n"
-"     _                                    _         __  \n"   
-"    | |              _                   (_)      / __)            \n" 
-"     \\ \\  _   _  ___| |_  ____ ____       _ ____ | |__ ___       \n"
-"      \\ \\| | | |/___)  _)/ _  )    \\     | |  _ \\|  __) _ \\   \n "
-"  _____) ) |_| |___ | |_( (/ /|| | |   | | | | | | | |_| |       \n"
-" (______/ \\__  (___/ \\___)____)_|_|_|    |_|_| |_|_|  \\___/     \n"
-"         (____/\n                                             ";
-
-	mvprintw(0, 1, sys);
-
-	mvprintw(9, 16, _data->getHour());
-
-
-	// const char *cpu = "\n";
-	// const char *ram = "\n";
-	// const char *disk = "\n";
-	// const char *network = "\n";
-
+	mvprintw(1, 6, "SYSTEM INFO");
+	mvprintw(3, 6, _data->getHour());
+	mvprintw(4, 6, "Username:%s", _system->getUserName().c_str());
+	mvprintw(5, 6, "Hostname:%s",_system->getHostName().c_str());
 	attroff(COLOR_PAIR(4));
+
+	attron(COLOR_PAIR(5));
+	mvprintw(8, 6, "CPU INFO");
+	mvprintw(10, 6, _cpu->getName().c_str());
+	mvprintw(11, 6, "%-50s", _cpu->getUsage().c_str());
+	mvprintw(12, 6, "Number of cores: %d", _cpu->getCount());
+	attroff(COLOR_PAIR(5));
+
+
+	attron(COLOR_PAIR(6));
+	mvprintw(15, 6, "RUM INFO");
+
+
+	mvprintw(17, 6, "%-50s", _ram->getUsed().c_str());
+	mvprintw(18, 6, "%-50s", _ram->getUnused().c_str());
+	mvprintw(19, 6, "%s", _ram->getMemory().c_str());
+
+	attroff(COLOR_PAIR(6));
+
+
+
 	box();
 
 	refresh();

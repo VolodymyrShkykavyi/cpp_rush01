@@ -13,17 +13,18 @@
 #ifndef NCURSES_HPP
 # define NCURSES_HPP
 
-# define WIDTH		320
-# define HEIGHT        1000
 # define CYCLEDELAY    100000
 
 #include <iostream>
 #include <unistd.h>
 #include <ncurses.h>
 
-
 #include "DateTime.hpp"
 #include "CPU.hpp"
+#include "System.hpp"
+#include "RAM.hpp"
+#include "Network.hpp"
+
 #include "IMonitorDisplay.hpp"
 
 
@@ -31,6 +32,11 @@ class Ncurses : public IMonitorDisplay {
 private:
     DateTime *_data;
     CPU *_cpu;
+    System *_system;
+    RAM *_ram;
+    Network *_network;
+
+
 
     int		_maxheight;
     int		_maxwidth;

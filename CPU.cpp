@@ -30,6 +30,12 @@ int CPU::getCount() {
     return _count;
 }
 
+std::string CPU::getUsage() {
+    std::string res = getCommand("top -l1 -n1 | grep  'CPU usage:' | cut -b 12-");
+
+    return (res);
+}
+
 void CPU::draw() {
 
 }

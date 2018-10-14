@@ -23,7 +23,9 @@ public:
 
     //getters
     std::string getName();
+    std::string getUsage();
     int         getCount();
+
     SDL_Surface *getSurfaceInfo();
     SDL_Surface *getSurfaceUsage();
     SDL_Surface *getSurfaceCPUCount();
