@@ -13,6 +13,11 @@ public:
 
     virtual void draw();
 
+    SDL_Surface *getSurfaceTotal();
+    SDL_Surface *getSurfaceResident();
+    SDL_Surface *getSurfacePrivate();
+    SDL_Surface *getSurfaceShared();
+
 };
 
 #endif

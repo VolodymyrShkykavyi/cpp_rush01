@@ -52,5 +52,10 @@ SDL_Surface * CPU::getSurfaceUsage() {
 }
 
 SDL_Surface * CPU::getSurfaceCPUCount() {
-    return getSurface("Number of cores: " + std::to_string(_count));
+    std::string Result;
+    std::ostringstream convert;
+    convert << _count;
+
+    Result = convert.str();
+    return getSurface("Number of cores: " + Result);
 }

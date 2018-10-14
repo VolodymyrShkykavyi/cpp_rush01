@@ -37,6 +37,8 @@ Graphic::Graphic() {
     _ram = new RAM();
     _network = new Network();
     _disk = new Disk();
+    _memory = new Memory();
+    _proc = new Processes();
 }
 
 void 	Graphic::set_pixel(int x, int y, Uint32 pixel)
@@ -89,7 +91,7 @@ void	Graphic::printmodule() {
 
 
     TTF_TextSolid = TTF_RenderText_Solid(font, "PROCESSES", color);
-    SDL_Rect prcrect = {100, 725, 50, 30};
+    SDL_Rect prcrect = {100, 765, 50, 30};
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &prcrect);
     SDL_FreeSurface(TTF_TextSolid);
 
@@ -216,18 +218,28 @@ void Graphic::GetSurface (){   // от времени я получаю серф
         SDL_Rect ttrect = {0, 620, 10, 10};
         SDL_BlitSurface(image, NULL, _bmp, &ttrect);
 
+        SDL_Rect memTotrec = {11, 670, 0, 0};
+        SDL_BlitSurface(_memory->getSurfaceTotal(), NULL, _bmp, &memTotrec);
 
+        SDL_Rect memResrec = {11, 690, 0, 0};
+        SDL_BlitSurface(_memory->getSurfaceResident(), NULL, _bmp, &memResrec);
+
+        SDL_Rect memPrivrec = {11, 710, 0, 0};
+        SDL_BlitSurface(_memory->getSurfacePrivate(), NULL, _bmp, &memPrivrec);
+
+        SDL_Rect memSharrec = {11, 730, 0, 0};
+        SDL_BlitSurface(_memory->getSurfaceShared(), NULL, _bmp, &memSharrec);
     }
 
     //processes
     {
-        SDL_Rect ustrect = {0, 750, 10, 10};
+        SDL_Rect ustrect = {0, 790, 10, 10};
         SDL_BlitSurface(image2, NULL, _bmp, &ustrect);
-        SDL_Rect ttrect = {0, 720, 10, 10};
+        SDL_Rect ttrect = {0, 760, 10, 10};
         SDL_BlitSurface(image, NULL, _bmp, &ttrect);
 
-
-
+        SDL_Rect procInfrec = {11, 810, 0, 0};
+        SDL_BlitSurface(_proc->getSurfaceInfo(), NULL, _bmp, &procInfrec);
     }
 }
 
@@ -239,8 +251,9 @@ void Graphic::start() {
         printmodule();
         while (SDL_PollEvent(&e))
         {
-            if (e.type == SDL_QUIT)
-                quit = 1;
+            if (e.type == SDL_QUIT) {
+                quit = 1;system("leaks ft_gkrellm");
+            }
 
             else if (e.type == SDL_KEYDOWN)
             {
@@ -249,7 +262,7 @@ void Graphic::start() {
             }
         }
         SDL_UpdateWindowSurface(_window);
-     //   usleep(CYCLEDELAY);
+        usleep(CYCLEDELAY);
         //	SDL_memset(_bmp->pixels, 54, _bmp->h * _bmp->pitch);
     }
 }

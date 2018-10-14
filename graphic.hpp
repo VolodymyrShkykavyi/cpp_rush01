@@ -29,7 +29,8 @@
 #include "Network.hpp"
 #include "Disk.hpp"
 #include "IMonitorDisplay.hpp"
-
+#include "Memory.hpp"
+#include "Processes.hpp"
 
 class Graphic : public IMonitorDisplay {
 private:
@@ -39,6 +40,8 @@ private:
     RAM *_ram;
     Network *_network;
     Disk *_disk;
+    Memory *_memory;
+    Processes *_proc;
 
     SDL_Window *_window;
     SDL_Surface *_bmp;

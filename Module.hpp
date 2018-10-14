@@ -8,6 +8,7 @@
 #include <sys/sysctl.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 # include <SDL.h>
 # include <SDL_ttf.h>
 
