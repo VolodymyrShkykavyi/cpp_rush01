@@ -40,7 +40,10 @@ SDL_Surface * CPU::getSurfaceInfo() {
 
 SDL_Surface * CPU::getSurfaceUsage() {
     std::string res = getCommand("top -l1 -n1 | grep  'CPU usage:' | cut -b 12-");
-    res = res.substr(0, res.length() - 1);
 
     return getSurface(res);
+}
+
+SDL_Surface * CPU::getSurfaceCPUCount() {
+    return getSurface("Number of cores: " + std::to_string(_count));
 }

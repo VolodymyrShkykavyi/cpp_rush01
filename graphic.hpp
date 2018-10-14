@@ -24,6 +24,10 @@
 
 #include "DateTime.hpp"
 #include "CPU.hpp"
+#include "System.hpp"
+#include "RAM.hpp"
+#include "Network.hpp"
+
 #include "IMonitorDisplay.hpp"
 
 
@@ -31,6 +35,9 @@ class Graphic : public IMonitorDisplay {
 private:
     DateTime *_data;
     CPU *_cpu;
+    System *_system;
+    RAM *_ram;
+    Network *_network;
 
     SDL_Window *_window;
     SDL_Surface *_bmp;

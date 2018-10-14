@@ -68,6 +68,10 @@ std::string Module::getCommand(const char* cmd) {
     }
     pclose(pipe);
 
+    if (result[result.length() - 1] == '\n'){
+        result = result.substr(0, result.length() - 1);
+    }
+
     return result;
 }
 

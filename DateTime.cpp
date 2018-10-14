@@ -32,7 +32,7 @@ void DateTime::setHour(void) {
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(_buffer, 80, "%d-%m-%Y %I:%M:%S", timeinfo);
+    strftime(_buffer, 80, "Time: %d-%m-%Y %I:%M:%S", timeinfo);
 }
 
 const char *DateTime::getHour(void) {

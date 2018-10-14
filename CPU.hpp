@@ -26,7 +26,7 @@ public:
     int         getCount();
     SDL_Surface *getSurfaceInfo();
     SDL_Surface *getSurfaceUsage();
-
+    SDL_Surface *getSurfaceCPUCount();
 };
 
 

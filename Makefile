@@ -15,7 +15,7 @@ INCLUDES =  -I./frameworks/SDL2.framework/Versions/A/Headers \
                -I./frameworks/SDL2_image.framework/Versions/A/Headers \
              
 
-SRC = main.cpp graphic.cpp DateTime.cpp Module.cpp CPU.cpp
+SRC = main.cpp graphic.cpp DateTime.cpp Module.cpp CPU.cpp System.cpp RAM.cpp Network.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = objects
