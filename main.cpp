@@ -32,7 +32,6 @@ int main (int ac, char *av[]) {
 
 	if ((ac == 2 && !strcmp(av[1], "1")) || input == "1")
     {
-    //	std::cout << "Grafic" << std::endl;
     	Graphic	graph;
         try {
             graph.start();
@@ -44,8 +43,7 @@ int main (int ac, char *av[]) {
     }
     else if ((ac == 2 && !strcmp(av[1], "2")) || input == "2")
     {
-    //	 std::cout << "Ncerces" << std::endl;
-    //     system("printf '\e[8;50;50t'");
+
          Ncurses    term;
         try {
             term.start();
