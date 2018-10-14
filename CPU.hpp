@@ -24,7 +24,7 @@ public:
     //getters
     std::string getName();
     int         getCount();
-
+    SDL_Surface *getSurfaceInfo();
 };
 
 

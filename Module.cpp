@@ -5,7 +5,7 @@ Module::Module() {
     _color.g = 70;
     _color.b = 0;
 
-    _font =  TTF_OpenFont("frameworks/ARIAL.TTF", 20);
+    _font =  TTF_OpenFont("frameworks/ARIAL.TTF", 18);
 }
 
 Module::~Module() {

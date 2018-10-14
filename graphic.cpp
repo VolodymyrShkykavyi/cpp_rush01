@@ -32,7 +32,7 @@ Graphic::Graphic() {
 
 
     _data = new DateTime();
-
+    _cpu = new CPU();
 }
 
 void 	Graphic::set_pixel(int x, int y, Uint32 pixel)
@@ -104,16 +104,21 @@ void Graphic::GetSurface (){   // от времени я получаю серф
     SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
 
 
+    //time
     SDL_Rect lstrect = {15, 48, 0, 0};
     SDL_BlitSurface(_data->getSurfaceData(), NULL, _bmp, &lstrect);
 
 
-
+    //cpu
     SDL_Rect cstrect = {0, 175, 10, 10};
-    SDL_BlitSurface(image, NULL ,_bmp, &cstrect);
+    SDL_BlitSurface(image, NULL, _bmp, &cstrect);
 
     SDL_Rect mstrect = {0, 215, 10, 10};
     SDL_BlitSurface(image2, NULL, _bmp, &mstrect);
+
+    SDL_Rect cInfostrect = {0, 220, 0, 0};
+    SDL_BlitSurface(_cpu->getSurfaceInfo(), NULL, _bmp, &cInfostrect);
+
 
 
 

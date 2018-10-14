@@ -6,6 +6,7 @@ CPU::CPU() {
     _nameLen = sizeof(_name);
     sysctlbyname("machdep.cpu.brand_string", &_name, &_nameLen, NULL, 0);
     sysctlbyname("hw.ncpu", &_count, &countLen, NULL, 0);
+    _title = "CPU";
 }
 
 CPU::~CPU() {}
@@ -31,4 +32,8 @@ int CPU::getCount() {
 
 void CPU::draw() {
 
+}
+
+SDL_Surface * CPU::getSurfaceInfo() {
+    return getSurface(_name);
 }
