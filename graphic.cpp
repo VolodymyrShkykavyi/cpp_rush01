@@ -97,28 +97,34 @@ Graphic::~Graphic() {
 
 void Graphic::GetSurface (){   // от времени я получаю серфейс который копирую в основной Серфейс что бы рисовать
 
-    SDL_Rect dstrect = {0, 0, 0, 0};
-    SDL_BlitSurface(image, NULL ,_bmp, &dstrect);
-
-    SDL_Rect rstrect = {0, 40, 0, 0};
-    SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
-
-
     //time
-    SDL_Rect lstrect = {15, 48, 0, 0};
-    SDL_BlitSurface(_data->getSurfaceData(), NULL, _bmp, &lstrect);
+    {
+        SDL_Rect dstrect = {0, 0, 0, 0};
+        SDL_BlitSurface(image, NULL, _bmp, &dstrect);
 
+        SDL_Rect rstrect = {0, 40, 0, 0};
+        SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
+
+        SDL_Rect lstrect = {15, 48, 0, 0};
+        SDL_BlitSurface(_data->getSurfaceData(), NULL, _bmp, &lstrect);
+    }
 
     //cpu
-    SDL_Rect cstrect = {0, 175, 10, 10};
-    SDL_BlitSurface(image, NULL, _bmp, &cstrect);
+    {
+        //img
+        SDL_Rect cstrect = {0, 175, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &cstrect);
+        SDL_Rect mstrect = {0, 215, 10, 10};
+        SDL_BlitSurface(image2, NULL, _bmp, &mstrect);
 
-    SDL_Rect mstrect = {0, 215, 10, 10};
-    SDL_BlitSurface(image2, NULL, _bmp, &mstrect);
+        //info
+        SDL_Rect cInfostrect = {11, 223, 0, 0};
+        SDL_BlitSurface(_cpu->getSurfaceInfo(), NULL, _bmp, &cInfostrect);
 
-    SDL_Rect cInfostrect = {11, 223, 0, 0};
-    SDL_BlitSurface(_cpu->getSurfaceInfo(), NULL, _bmp, &cInfostrect);
+        SDL_Rect cUsageRect = {11, 240, 0, 0};
+        SDL_BlitSurface(_cpu->getSurfaceUsage(), NULL, _bmp, &cUsageRect);
 
+    }
 
 
 

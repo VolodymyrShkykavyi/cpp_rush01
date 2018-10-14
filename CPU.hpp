@@ -25,6 +25,8 @@ public:
     std::string getName();
     int         getCount();
     SDL_Surface *getSurfaceInfo();
+    SDL_Surface *getSurfaceUsage();
+
 };
 
 

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <stdexcept>
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <string>
@@ -35,6 +36,7 @@ public:
     SDL_Surface *getSurfaceTitle();
 
     void setFontSize(int size);
+    std::string getCommand(const char* cmd);
 };
 
 #endif

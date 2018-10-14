@@ -48,3 +48,26 @@ void Module::setFontSize(int size) {
     TTF_CloseFont(_font);
     _font = TTF_OpenFont("frameworks/ARIAL.TTF", _fontSize);
 }
+
+std::string Module::getCommand(const char* cmd) {
+    char tmp[256];
+    std::string result = "";
+    FILE* pipe = popen(cmd, "r");
+
+    if (!pipe){
+        return result;
+    }
+
+    try {
+        while (!feof(pipe)) {
+            if (fgets(tmp, 256, pipe) != NULL)
+                result += tmp;
+        }
+    } catch (std::exception &e) {
+        pclose(pipe);
+    }
+    pclose(pipe);
+
+    return result;
+}
+

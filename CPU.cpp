@@ -37,3 +37,10 @@ void CPU::draw() {
 SDL_Surface * CPU::getSurfaceInfo() {
     return getSurface(_name);
 }
+
+SDL_Surface * CPU::getSurfaceUsage() {
+    std::string res = getCommand("top -l1 -n1 | grep  'CPU usage:' | cut -b 12-");
+    res = res.substr(0, res.length() - 1);
+
+    return getSurface(res);
+}
