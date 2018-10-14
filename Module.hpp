@@ -17,6 +17,7 @@ class Module: public IMonitorModule
 {
 protected:
     std::string _title;
+    int _fontSize;
     int _startY;
     Module();
     TTF_Font* _font;
@@ -32,6 +33,8 @@ public:
     std::string getTitle();
     SDL_Surface *getSurface(std::string);
     SDL_Surface *getSurfaceTitle();
+
+    void setFontSize(int size);
 };
 
 #endif

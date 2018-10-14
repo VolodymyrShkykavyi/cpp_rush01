@@ -116,7 +116,7 @@ void Graphic::GetSurface (){   // от времени я получаю серф
     SDL_Rect mstrect = {0, 215, 10, 10};
     SDL_BlitSurface(image2, NULL, _bmp, &mstrect);
 
-    SDL_Rect cInfostrect = {0, 220, 0, 0};
+    SDL_Rect cInfostrect = {11, 223, 0, 0};
     SDL_BlitSurface(_cpu->getSurfaceInfo(), NULL, _bmp, &cInfostrect);
 
 

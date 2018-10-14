@@ -4,8 +4,9 @@ Module::Module() {
     _color.r = 0;
     _color.g = 70;
     _color.b = 0;
+    _fontSize = 16;
 
-    _font =  TTF_OpenFont("frameworks/ARIAL.TTF", 18);
+    _font =  TTF_OpenFont("frameworks/ARIAL.TTF", _fontSize);
 }
 
 Module::~Module() {
@@ -39,4 +40,11 @@ SDL_Surface * Module::getSurface(std::string msg = "") {
 
 SDL_Surface * Module::getSurfaceTitle() {
     return getSurface(_title);
+}
+
+void Module::setFontSize(int size) {
+    _fontSize = size;
+
+    TTF_CloseFont(_font);
+    _font = TTF_OpenFont("frameworks/ARIAL.TTF", _fontSize);
 }

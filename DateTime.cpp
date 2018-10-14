@@ -17,6 +17,7 @@
 
 DateTime::DateTime(){
     _title = "Date";
+    setFontSize(18);
 };
 
 DateTime::~DateTime() {
