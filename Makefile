@@ -15,15 +15,15 @@ INCLUDES =  -I./frameworks/SDL2.framework/Versions/A/Headers \
                -I./frameworks/SDL2_image.framework/Versions/A/Headers \
              
 
-SRC = main.cpp graphic.cpp DateTime.cpp Module.cpp CPU.cpp
+SRC = main.cpp graphic.cpp DateTime.cpp Module.cpp CPU.cpp Ncurses.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = objects
 
 all:	 $(NAME)
 
-$(NAME): $(OBJ) $(OBJ_DIR)
-		 $(CC) $(FLAGS) $(OBJ) -o $(NAME) $(FRAMEWORKS) $(INCLUDES)
+$(NAME): $(OBJ_DIR) $(OBJ)
+		 $(CC) $(FLAGS) $(OBJ) -o $(NAME) $(FRAMEWORKS) $(INCLUDES)  -lncurses
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

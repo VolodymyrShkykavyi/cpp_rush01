@@ -171,7 +171,7 @@ void Graphic::start() {
             }
         }
         SDL_UpdateWindowSurface(_window);
-        usleep(CYCLEDELAY);
+     //   usleep(CYCLEDELAY);
         //	SDL_memset(_bmp->pixels, 54, _bmp->h * _bmp->pitch);
     }
 }
