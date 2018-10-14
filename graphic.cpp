@@ -36,6 +36,7 @@ Graphic::Graphic() {
     _system = new System();
     _ram = new RAM();
     _network = new Network();
+    _disk = new Disk();
 }
 
 void 	Graphic::set_pixel(int x, int y, Uint32 pixel)
@@ -67,19 +68,31 @@ void	Graphic::printmodule() {
     SDL_FreeSurface(TTF_TextSolid);
 
     TTF_TextSolid = TTF_RenderText_Solid(font, "RAM", color);
-    SDL_Rect crect = {130, 355, 50, 30};
+    SDL_Rect crect = {130, 305, 50, 30};
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &crect);
     SDL_FreeSurface(TTF_TextSolid);
 
-    TTF_TextSolid = TTF_RenderText_Solid(font, "DISK", color);
-    SDL_Rect ccrect = {130, 530, 50, 30};
+    TTF_TextSolid = TTF_RenderText_Solid(font, "STORAGE", color);
+    SDL_Rect ccrect = {130, 425, 50, 30};
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &ccrect);
     SDL_FreeSurface(TTF_TextSolid);
 
     TTF_TextSolid = TTF_RenderText_Solid(font, "NETWORK", color);
-    SDL_Rect pcrect = {110, 705, 50, 30};
+    SDL_Rect pcrect = {110, 525, 50, 30};
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &pcrect);
     SDL_FreeSurface(TTF_TextSolid);
+
+    TTF_TextSolid = TTF_RenderText_Solid(font, "MEMORY REGIONS", color);
+    SDL_Rect mcrect = {70, 625, 50, 30};
+    SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &mcrect);
+    SDL_FreeSurface(TTF_TextSolid);
+
+
+    TTF_TextSolid = TTF_RenderText_Solid(font, "PROCESSES", color);
+    SDL_Rect prcrect = {100, 725, 50, 30};
+    SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &prcrect);
+    SDL_FreeSurface(TTF_TextSolid);
+
 
     TTF_CloseFont(font);
 
@@ -147,54 +160,75 @@ void Graphic::GetSurface (){   // от времени я получаю серф
 
     //ram
     {
-        SDL_Rect strect = {0, 350, 10, 10};
-        SDL_BlitSurface(image, NULL, _bmp, &strect);
-
-        SDL_Rect ystrect = {0, 390, 10, 10};
+        SDL_Rect ystrect = {0, 330, 10, 10};
         SDL_BlitSurface(image2, NULL, _bmp, &ystrect);
 
-        SDL_Rect rUsedrect = {11, 400, 0, 0};
+        SDL_Rect strect = {0, 300, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &strect);
+
+
+        SDL_Rect rUsedrect = {11, 350, 0, 0};
         SDL_BlitSurface(_ram->getSurfaceUsed(), NULL, _bmp, &rUsedrect);
 
-        SDL_Rect rUnusedrect = {11, 415, 0, 0};
+        SDL_Rect rUnusedrect = {11, 370, 0, 0};
         SDL_BlitSurface(_ram->getSurfaceUnused(), NULL, _bmp, &rUnusedrect);
 
-        SDL_Rect rMemoryrect = {11, 435, 0, 0};
+        SDL_Rect rMemoryrect = {11, 390, 0, 0};
         SDL_BlitSurface(_ram->getSurfaceMemory(), NULL, _bmp, &rMemoryrect);
     }
 
 
     //disk
     {
-        SDL_Rect rtrect = {0, 525, 10, 10};
+        SDL_Rect tstrect = {0, 450, 10, 10};
+        SDL_BlitSurface(image2, NULL, _bmp, &tstrect);
+        SDL_Rect rtrect = {0, 420, 10, 10};
         SDL_BlitSurface(image, NULL, _bmp, &rtrect);
 
-        SDL_Rect tstrect = {0, 565, 10, 10};
-        SDL_BlitSurface(image2, NULL, _bmp, &tstrect);
+
+        SDL_Rect diskCaprect = {11, 470, 0, 0};
+        SDL_BlitSurface(_disk->getSurfaceUserCapacity(), NULL, _bmp, &diskCaprect);
+
+        SDL_Rect diskAvailRect = {11, 490, 0, 0};
+        SDL_BlitSurface(_disk->getSurfaceUserAvailable(), NULL, _bmp, &diskAvailRect);
     }
 
 
     //network
     {
-        SDL_Rect ttrect = {0, 700, 10, 10};
+        SDL_Rect ustrect = {0, 550, 10, 10};
+        SDL_BlitSurface(image2, NULL, _bmp, &ustrect);
+        SDL_Rect ttrect = {0, 520, 10, 10};
         SDL_BlitSurface(image, NULL, _bmp, &ttrect);
 
-        SDL_Rect ustrect = {0, 740, 10, 10};
-        SDL_BlitSurface(image2, NULL, _bmp, &ustrect);
 
-        SDL_Rect netwInrect = {11, 750, 0, 0};
+        SDL_Rect netwInrect = {11, 570, 0, 0};
         SDL_BlitSurface(_network->getSurfaceIn(), NULL, _bmp, &netwInrect);
 
-        SDL_Rect netwOutrect = {11, 770, 0, 0};
+        SDL_Rect netwOutrect = {11, 590, 0, 0};
         SDL_BlitSurface(_network->getSurfaceOut(), NULL, _bmp, &netwOutrect);
     }
-    // 		_time = _data->drow();
-    // 	SDL_Rect rect;
-    // 	rect.x = 50;
-    // 	rect.y = 50;
-    // 	rect.w = 50;
-    // 	rect.h = 30;
-    // SDL_BlitSurface(_time, NULL, _bmp, &rect);
+
+    //mem reg
+    {
+        SDL_Rect ustrect = {0, 650, 10, 10};
+        SDL_BlitSurface(image2, NULL, _bmp, &ustrect);
+        SDL_Rect ttrect = {0, 620, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &ttrect);
+
+
+    }
+
+    //processes
+    {
+        SDL_Rect ustrect = {0, 750, 10, 10};
+        SDL_BlitSurface(image2, NULL, _bmp, &ustrect);
+        SDL_Rect ttrect = {0, 720, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &ttrect);
+
+
+
+    }
 }
 
 void Graphic::start() {

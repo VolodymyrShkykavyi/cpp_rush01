@@ -14,7 +14,7 @@
 # define GRAPHIC_HPP
 
 # define WIDTH        320
-# define HEIGHT        1000
+# define HEIGHT        1200
 # define CYCLEDELAY    100000
 
 #include <iostream>
@@ -27,7 +27,7 @@
 #include "System.hpp"
 #include "RAM.hpp"
 #include "Network.hpp"
-
+#include "Disk.hpp"
 #include "IMonitorDisplay.hpp"
 
 
@@ -38,6 +38,7 @@ private:
     System *_system;
     RAM *_ram;
     Network *_network;
+    Disk *_disk;
 
     SDL_Window *_window;
     SDL_Surface *_bmp;

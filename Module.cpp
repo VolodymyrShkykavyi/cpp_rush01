@@ -4,7 +4,7 @@ Module::Module() {
     _color.r = 0;
     _color.g = 70;
     _color.b = 0;
-    _fontSize = 16;
+    _fontSize = 18;
 
     _font =  TTF_OpenFont("frameworks/ARIAL.TTF", _fontSize);
 }

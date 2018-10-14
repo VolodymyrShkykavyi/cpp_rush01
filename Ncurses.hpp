@@ -13,8 +13,8 @@
 #ifndef NCURSES_HPP
 # define NCURSES_HPP
 
-# define WIDTH		320
-# define HEIGHT        1000
+//# define WIDTH		320
+//# define HEIGHT        1000
 # define CYCLEDELAY    100000
 
 #include <iostream>

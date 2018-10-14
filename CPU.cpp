@@ -7,6 +7,7 @@ CPU::CPU() {
     sysctlbyname("machdep.cpu.brand_string", &_name, &_nameLen, NULL, 0);
     sysctlbyname("hw.ncpu", &_count, &countLen, NULL, 0);
     _title = "CPU";
+    setFontSize(16);
 }
 
 CPU::~CPU() {}
