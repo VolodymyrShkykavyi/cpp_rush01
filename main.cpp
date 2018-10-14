@@ -34,14 +34,25 @@ int main (int ac, char *av[]) {
     {
     //	std::cout << "Grafic" << std::endl;
     	Graphic	graph;
-    	graph.start();
+        try {
+            graph.start();
+        }
+        catch (...) {
+
+        }
+
     }
     else if ((ac == 2 && !strcmp(av[1], "2")) || input == "2")
     {
     //	 std::cout << "Ncerces" << std::endl;
     //     system("printf '\e[8;50;50t'");
          Ncurses    term;
-         term.start();
+        try {
+            term.start();
+        }
+        catch (...){
+
+        }
     }
     else
         std::cout << "ERROR: Please Select1 or 2." << std::endl;
