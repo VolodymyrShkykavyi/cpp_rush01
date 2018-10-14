@@ -14,7 +14,7 @@
 # define GRAPHIC_HPP
 
 # define WIDTH        320
-# define HEIGHT        1200
+# define HEIGHT        1040
 # define CYCLEDELAY    200000
 
 #include <iostream>

@@ -68,7 +68,7 @@ void	Graphic::printmodule() {
     SDL_FreeSurface(TTF_TextSolid);
 
     TTF_TextSolid = TTF_RenderText_Solid(font, "CPU", color);
-    SDL_Rect zrect = {130, 180, 50, 30};
+    SDL_Rect zrect = {130, 160, 50, 30};
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &zrect);
     SDL_FreeSurface(TTF_TextSolid);
 
@@ -98,6 +98,10 @@ void	Graphic::printmodule() {
     SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &prcrect);
     SDL_FreeSurface(TTF_TextSolid);
 
+    TTF_TextSolid = TTF_RenderText_Solid(font, "NORMINETTE", color);
+    SDL_Rect catrect = {100, 890, 50, 30};
+    SDL_BlitSurface(TTF_TextSolid, NULL, _bmp, &catrect);
+    SDL_FreeSurface(TTF_TextSolid);
 
     TTF_CloseFont(font);
 
@@ -127,11 +131,11 @@ void Graphic::GetSurface (){   // от времени я получаю серф
 
     //system
     {
+        SDL_Rect rstrect = {0, 30, 0, 0};
+        SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
         SDL_Rect dstrect = {0, 0, 0, 0};
         SDL_BlitSurface(image, NULL, _bmp, &dstrect);
 
-        SDL_Rect rstrect = {0, 40, 0, 0};
-        SDL_BlitSurface(image2, NULL, _bmp, &rstrect);
 
         SDL_Rect lstrect = {15, 48, 0, 0};
         SDL_BlitSurface(_data->getSurfaceData(), NULL, _bmp, &lstrect);
@@ -152,19 +156,21 @@ void Graphic::GetSurface (){   // от времени я получаю серф
     //cpu
     {
         //img
-        SDL_Rect cstrect = {0, 175, 10, 10};
-        SDL_BlitSurface(image, NULL, _bmp, &cstrect);
-        SDL_Rect mstrect = {0, 215, 10, 10};
+        SDL_Rect mstrect = {0, 185, 10, 10};
         SDL_BlitSurface(image2, NULL, _bmp, &mstrect);
+        SDL_Rect cstrect = {0, 155, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &cstrect);
 
         //info
-        SDL_Rect cInfostrect = {11, 223, 0, 0};
+        _cpu->setFontSize(16);
+        SDL_Rect cInfostrect = {11, 205, 0, 0};
         SDL_BlitSurface(_cpu->getSurfaceInfo(), NULL, _bmp, &cInfostrect);
 
-        SDL_Rect cUsageRect = {11, 240, 0, 0};
+        _cpu->setFontSize(18);
+        SDL_Rect cUsageRect = {11, 230, 0, 0};
         SDL_BlitSurface(_cpu->getSurfaceUsage(), NULL, _bmp, &cUsageRect);
 
-        SDL_Rect cCountRect = {11, 260, 0, 0};
+        SDL_Rect cCountRect = {11, 255, 0, 0};
         SDL_BlitSurface(_cpu->getSurfaceCPUCount(), NULL, _bmp, &cCountRect);
 
     }
@@ -248,13 +254,16 @@ void Graphic::GetSurface (){   // от времени я получаю серф
         SDL_Rect ttrect = {0, 760, 10, 10};
         SDL_BlitSurface(image, NULL, _bmp, &ttrect);
 
-        SDL_Rect procInfrec = {11, 810, 0, 0};
+        SDL_Rect procInfrec = {14, 830, 0, 0};
         SDL_BlitSurface(_proc->getSurfaceInfo(), NULL, _bmp, &procInfrec);
     }
 
     //cat
     {
-        SDL_Rect ustrect = {65, 940, 10, 10};
+        SDL_Rect ttrect = {0, 885, 10, 10};
+        SDL_BlitSurface(image, NULL, _bmp, &ttrect);
+
+        SDL_Rect ustrect = {60, 930, 10, 10};
         SDL_BlitSurface(cat[rand() % 3], NULL, _bmp, &ustrect);
     }
 }
