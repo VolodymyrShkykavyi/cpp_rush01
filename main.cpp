@@ -16,27 +16,32 @@
 
 #include "graphic.hpp"
 #include "DateTime.hpp"
+#include "Ncurses.hpp"
 
 
 int main (int ac, char *av[]) {
 
     std::string input;
 
-    if (ac == 2 && strcmp(av[1], "1") && strcmp(av[1], "2")){
+    if (ac != 2){
 
+        system("printf '\e[8;50;70t'");
         std::cout << "Select display" << std::endl << "1: Graphic" << std::endl << "2: Terminal" << std::endl;
         std::cin >> input;
     }
 
-	if (!strcmp(av[1], "1") || input == "1")
+	if ((ac == 2 && !strcmp(av[1], "1")) || input == "1")
     {
-    	std::cout << "Grafic" << std::endl;
+    //	std::cout << "Grafic" << std::endl;
     	Graphic	graph;
     	graph.start();
     }
-    else if (!strcmp(av[1], "2") || input == "2")
+    else if ((ac == 2 && !strcmp(av[1], "2")) || input == "2")
     {
-    	 std::cout << "Ncerces" << std::endl;
+    //	 std::cout << "Ncerces" << std::endl;
+    //     system("printf '\e[8;50;50t'");
+         Ncurses    term;
+         term.start();
     }
     else
         std::cout << "ERROR: Please Select1 or 2." << std::endl;
