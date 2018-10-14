@@ -13,7 +13,7 @@
 #ifndef NCURSES_HPP
 # define NCURSES_HPP
 
-# define CYCLEDELAY    100000
+# define CYCLEDELAY    200000
 
 #include <iostream>
 #include <unistd.h>

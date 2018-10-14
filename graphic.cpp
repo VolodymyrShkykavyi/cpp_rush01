@@ -29,6 +29,9 @@ Graphic::Graphic() {
 
     image = SDL_LoadBMP("image/header1.bmp");
     image2 = SDL_LoadBMP("image/body1.bmp");
+    cat[0] = SDL_LoadBMP("image/cat1.bmp");
+    cat[1] = SDL_LoadBMP("image/cat2.bmp");
+    cat[2] = SDL_LoadBMP("image/cat3.bmp");
 
 
     _data = new DateTime();
@@ -107,6 +110,13 @@ Graphic::Graphic(Graphic const & src) {
 
 Graphic::~Graphic() {
 
+    SDL_FreeSurface(image);
+    SDL_FreeSurface(image2);
+    SDL_FreeSurface(cat[0]);
+    SDL_FreeSurface(cat[1]);
+    SDL_FreeSurface(cat[2]);
+    SDL_FreeSurface(TTF_TextSolid);
+    SDL_FreeSurface(_bmp);
 
     SDL_DestroyWindow(_window);
     SDL_Quit();
@@ -241,6 +251,12 @@ void Graphic::GetSurface (){   // от времени я получаю серф
         SDL_Rect procInfrec = {11, 810, 0, 0};
         SDL_BlitSurface(_proc->getSurfaceInfo(), NULL, _bmp, &procInfrec);
     }
+
+    //cat
+    {
+        SDL_Rect ustrect = {65, 940, 10, 10};
+        SDL_BlitSurface(cat[rand() % 3], NULL, _bmp, &ustrect);
+    }
 }
 
 void Graphic::start() {
@@ -252,7 +268,7 @@ void Graphic::start() {
         while (SDL_PollEvent(&e))
         {
             if (e.type == SDL_QUIT) {
-                quit = 1;system("leaks ft_gkrellm");
+                quit = 1;
             }
 
             else if (e.type == SDL_KEYDOWN)

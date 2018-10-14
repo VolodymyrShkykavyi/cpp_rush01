@@ -15,7 +15,7 @@
 
 # define WIDTH        320
 # define HEIGHT        1200
-# define CYCLEDELAY    100000
+# define CYCLEDELAY    200000
 
 #include <iostream>
 #include <unistd.h>
@@ -53,6 +53,7 @@ private:
     SDL_Surface *TTF_TextSolid;
     SDL_Surface *image;
     SDL_Surface *image2;
+    SDL_Surface *cat[3];
 
 public:
 
